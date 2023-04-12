@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int vector[] = { 3, -5, 7, 10, -4, 14, 5, 2, -13 };
+	int n = sizeof(vector) / sizeof(vector[0]); 
+	int *ptr = vector, max = *ptr;
+
+	for (int i = 1; i < n; i++) 
+		if (max < (*ptr + i)) max = *(ptr + i);
+	cout << max;
+	
+	return 0;
+}
+
