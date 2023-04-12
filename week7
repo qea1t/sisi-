@@ -1,0 +1,129 @@
+
+#include <iostream>
+#include <ctime>
+using namespace std;
+
+
+bool isLeap(int year) { //task 1 and 2
+	return ((year % 4 == 0 || year % 100 == 0 || year % 400 == 0) ? true : false);
+}
+int monthLengthSwitch(int year , int month) {
+	switch (month)
+	{
+		case 1: 
+			return 31;
+			break;
+		case 2: 
+			if (isLeap(year)) return 29;
+			else return 28;
+		case 3:
+			return 31;
+			break;
+		case 4:
+			return 30;
+			break;
+		case 5:
+			return 31;
+			break;
+		case 6:
+			return 30;
+			break;
+		case 7:
+			return 31;
+			break;
+		case 8:
+			return 31;
+			break;
+		case 9:
+			return 30;
+			break;
+		case 10:
+			return 31;
+			break;
+		case 11:
+			return 30;
+			break;
+		case 12:
+			return 31;
+			break;
+	default:
+		return -1;
+		break;
+	}
+}
+int monthLengthArray(int year, int month) {
+	int dayInMonth[12] = { 31,28,31,30,31,30,31,31,30,31,30,31};
+	if (month == 2 && isLeap(year)) return 29;
+	return (dayInMonth[month - 1]);
+}
+struct Date {
+	int year;
+	int month;
+	int day;
+};
+
+Date today(void) {
+	Date t;
+	time_t tt = time(NULL);
+	tm tl = *localtime(&tt);
+	_t.year = tl.tm_year + 1900;
+	_t.month = tl.tm_mon + 1;
+	_t.day = tl.tm_mday;
+	return t;
+}
+//task1
+/*
+int main() {
+	for (int yr = 1995; yr < 2017; yr++)
+		cout << yr << " -> " << isLeap(yr) << endl;
+
+
+	return 0;
+}
+*/
+//task 2
+
+//int main() {
+//	cout << "method by switch\n";
+//	for (int yr = 2000; yr < 2002; yr++) {
+//		for (int mo = 1; mo <= 12; mo++)
+//			cout << monthLengthSwitch(yr, mo) << " ";
+//		cout << endl;
+//	}
+//
+//	cout << "method by array\n";
+//	for (int yr = 2000; yr < 2002; yr++) {
+//		for (int mo = 1; mo <= 12; mo++)
+//			cout << monthLengthArray(yr, mo) << " ";
+//		cout << endl;
+//	}
+//	return 0;
+//}
+
+//task 3
+
+// int main()
+// {
+// 	Date t , birth;
+// 	int count = 0;
+
+// 	cout << "enter your birthday by space(year,month,day): ";
+// 	cin >> birth.year >> birth.month >> birth.day;
+
+// 	t = today();
+	
+
+// 	count = monthLengthArray(birth.year, birth.month) - birth.day;
+// 	for (int i = birth.month + 1; i <= 12;i++) count += monthLengthArray(birth.year, i);
+
+// 	for (int i = birth.year + 1;i < t.year;i++) {
+// 		if (isLeap(i)) count += 366;
+// 		else count += 365;
+// 	}
+// 	count += t.day;
+// 	for (int i = t.month - 1; i >= 1;i--) count += monthLengthArray(t.year, i);
+
+// 	cout << count;
+
+// 	return 0;
+// }
