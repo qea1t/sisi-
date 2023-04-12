@@ -1,0 +1,57 @@
+#include <iostream>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+	srand(time(NULL));
+	int N = 10 , count = 0;
+	float* array = new float[N];
+	for (int i = 0; i < N; i++)	array[i] = 0.01 * (rand() % 401 - 200);
+	for (int i = 0; i < N; i++) 
+	{
+		if (array[i] > 0) count++;
+		cout << array[i] << " ";
+	}
+
+	{
+cout << "\numbers greater than 0 :" << count <<"\numbers less than 0 :"<<N - count;
+}
+delete array;
+}
+
+
+/*
+int main() {
+	srand(time(NULL));
+	int r = 3, c = 3,evenNumber = 0;
+	int** array = new int *[r];
+	for (int i = 0; i < r;i++) array[i] = new int[c];
+
+	for (int i = 0; i < r;i++)
+		for (int j = 0;j < c;j++)
+			array[i][j] = rand() % 89 + 10;
+		
+
+	for (int i = 0; i < r;i++) {
+		for (int j = 0;j < c;j++)
+			cout << array[i][j]<<" ";
+		cout << endl;
+	}
+	cout << endl;
+	for (int i = 0; i < r;i++)
+		for (int j = 0;j < c;j++) {
+			if (i == j) cout << array[i][j] << " ";
+			if (i % 2 == 0) evenNumber++;
+		}
+	cout << endl;
+	
+	for (int i = 0,j=c - 1 ;i < r;i++,j--) 
+			cout << array[i][j]<<" ";
+
+	cout << "\nevenNumber - " << evenNumber << "\nevenNumber- " << ((r * c) - evenNumber);
+	for (int i = 0; i  < r;i++)	delete[] array[i];
+	delete[] array;
+}delete[] array;
+
+}*/
