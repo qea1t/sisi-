@@ -1,0 +1,31 @@
+#include <iostream>
+#include <ctime>
+using namespace std;
+
+int main(void) {
+		srand(time(NULL));
+
+		int array[3][3], * ptr = array[0], evenNumber = 0;
+
+		int r = sizeof(array) / sizeof(array[0]);         
+		int c = sizeof(array[0]) / sizeof(array[0][0]);   
+		int e = sizeof(array) / sizeof(array[0][0]);
+
+		for (int i = 0;i < e;i++) 
+		{
+			*(ptr + i) = 10 + rand() % 90;
+		}
+		for (int j = 0; j < e;j++) 
+		{
+			if (j % c == 0 && j != 0) cout << endl;
+			if (*(ptr + j) % 2 == 0) evenNumber++;
+			cout << *(ptr + j) << " ";
+		}
+		cout << "\nMain diagonal = ";
+		for (int i = 0, j = 0;i < e; i += r, j++) cout << *(ptr + (i + j)) << " ";
+		
+		cout << "\nSide diagonal = ";
+		for (int i = r - 1, j = 0;i < e; i += r, j++) cout << *(ptr + (i - j)) << " ";
+		
+		cout << "\nEven numbers = " << evenNumber << "\nNot event numbers = " << e - evenNumber;
+	}
